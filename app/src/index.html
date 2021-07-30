@@ -106,8 +106,460 @@
       }
       await new Promise(r => setTimeout(r, 2000))
       document.querySelector('#layer1').style.opacity = 0
+      // await new Promise(r => setTimeout(r, 1000))
+      document.querySelector('#site').style.opacity = 1
     }
   });
 </script>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+<div id="site">
+  <header>
+    <h1>Kev<span class="in">in</span> Ashcraft</h1>
+    <h2>Computer Programmer</h2>
+  </header>
+  <style>
+    .app-showcase {
+      display: flex;
+      align-items: stretch;
+      flex-direction: column;
+      flex-wrap: wrap;
+      /* align-content: center; */
+    }
+    .app-showcase > .row {
+      margin: 65px 0;
+    }
+    .app-showcase > .row.title {
+      margin: 95px 0 0 0;
+    }
+    .app-title {
+      /* margin-left: 25px; */
+    }
+    .app-title.right {
+      margin-left: 0;
+      /* margin-right: 25px; */
+    }
+    .row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      /* margin: 75px auto; */
+      max-width: 950px;
+      /* border: 1px dashed black; */
+    }
+    .row.column {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .row.between {
+      /* justify-content: space-between; */
+    }
+    .row.title {
+      justify-content: start;
+      /* margin: 45px auto -25px; */
+    }
+    @media (max-width: 400px) {
+      .row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .row-reversed {
+        flex-direction: column-reverse;
+      }
+      .app-title {
+        margin-left: 0;
+      }
+    }
+    .hr {
+      margin: 45px auto;
+      width: 50%;
+      border-bottom: 1px solid black;
+    }
+    .open-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin: 25px auto;
+    }
+    .open-links a {
+      margin: 5px;
+    }
+    .row-1, .row-3 {
+      background: rgb(21,101,192);
+      background: linear-gradient(90deg, rgba(21,101,192,1) 0%, rgba(242,242,242,0) 54%);
+    }
+    .row-2 {
+      background: rgb(76,175,80);
+      background: linear-gradient(270deg, rgba(76,175,80,1) 0%, rgba(255,255,255,1) 54%);      
+    }
+    @media (max-width: 400px) {
+      .row-1, .row-3 {
+        background: rgb(21,101,192);
+        background: linear-gradient(180deg, rgba(21,101,192,1) 0%, rgba(242,242,242,0) 35%);
+      }
+      .row-2 {
+        background: rgb(76,175,80);
+        background: linear-gradient(180deg, rgba(76,175,80,1) 0%, rgba(255,255,255,1) 35%);        
+      }
+    }
+    .a-button {
+      padding: 5px 10px;
+      font-weight: 600;
+      font-size: 14px;
+      height: 20px;
+      line-height: 20px;
+      background: lightgray;
+      display: flex;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #424242;
+      border: 1px solid rgb(21, 76, 119);
+      transition: all .2s ease;
+    }
+    .a-button:hover {
+      color: #F5F5F5;
+      text-shadow: 1px 1px 0 #424242;
+    }
+    .a-button img {
+      margin-right: 5px;
+    }
+    .a-more {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      /* padding-top: 35px; */
+      font-size: 18px;
+      color: white;
+      text-shadow: 2px 2px 2px rgba(0,0,0,.4);
+      transition: all .3s;
+      opacity: .7;
+      padding-bottom: 25px;
+    }
+    .a-more.less {
+      color: white;
+    }
+    .a-more.less:hover {
+      color: white;
+    }
+    .a-more img {
+      width: 18px;
+      margin: 5px 0;
+      opacity: .4;
+      transition: all .3s;
+    }
+    .a-more:hover {
+      text-shadow: 2px 2px 2px rgba(0,0,0,1);
+      /* color: black; */
+      /* text-shadow: 1px 1px 2px white; */
+      opacity: 1;
+    }
+    .a-more:hover img {
+      opacity: 1;
+    }
+    .a-more.less img {
+      transform: rotateZ(180deg);
+    }
+    .hidden {
+      display: none;
+    }
+    .hidden2 {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 1.5s;
+    }
+    .hidden2.show {
+      max-height: 1400px;
+    }
+    .more-info {
+      background: rgba(0, 0, 0, .6);
+      color: white; 
+      text-shadow: 1px 2px 3px black;
+      /* margin-top: 35px; */
+      /* padding-bottom: 25px; */
+    }
+    .more-info ul {
+      list-style: none;
+      padding-bottom: 35px;
+    }
+    .more-info li {
+      font-size: 21px;
+      line-height: 24px;
+      margin: 10px;
+    }
+    .more-info li:before {
+      font-size: 14px;
+      margin-right: 8px;      
+    }
+    .more-info.el li:before {
+      content: "📡";
+    }
+    .more-info.rf li:before {
+      content: "🌎";
+    }
+    .more-info.b li:before {
+      content: "🐦";
+    }
+    .more-info p {
+      font-size: 21px;
+      margin: 25px;
+      padding-bottom: 15px;
+    }
+  </style>
+  <script>
+    function show(event, elementId) {
+      event.preventDefault()
+      document.querySelector(`#${elementId} .more-info`).classList.add('show')
+      document.querySelector(`#${elementId} .a-more`).classList.add('hidden')
+    }
+    function hide(event, elementId) {
+      event.preventDefault()
+      document.querySelector(`#${elementId} .more-info`).classList.remove('show')
+      setTimeout(() => {
+        document.querySelector(`#${elementId} .a-more`).classList.remove('hidden')
+      }, 500)
+    }
+  </script>
+  <!-- Hey! Hello! Hire me! -->
+  <!-- I can make good apps quickly and I'm fun to work with -->
+  <main>
+    <div class="row title" style="margin-top: 35px">
+      <h3>Hello World</h3>
+    </div>
+    <div class="row">
+      <div>
+        <img src="/img/keyboard.png" width="120"/>
+      </div>
+      <div>
+        <p>I'm Kevin Ashcraft, a computer programmer and amateur radio operator in Central Florida.</p>
+      </div>
+    </div>
+
+    <div class="app-showcase">
+      <div class="row title">
+        <h3>My Apps</h3>
+      </div>
+      <div class="row column row-1">
+        <div class="row between">
+          <div class="app-title">
+            <h4><img src="/img/eaglelogger.png" width="45" />EagleLogger</h4>
+            <h5>Ham Radio Checkin & Chat</h5>
+            <div class="open-links">
+              <a href="" title="EagleLogger for Web" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+              <a href="" title="EagleLogger for Android"><img src="/img/play-store.png" width="125" /></a>
+              <a href="" title="EagleLogger for iOS"><img src="/img/app-store.svg" width="110" /></a>
+            </div>
+          </div>
+          <div>
+            <img src="/img/eaglelogger.gif"  width="185" style="margin-top: 35px"/>
+          </div>
+        </div>
+        <div class="row column" id="el-more">
+          <a href="" title="Click for More Info on EagleLogger" class="a-more" onclick="show(event, 'el-more')">
+            <span>More Info</span>
+            <img src="/img/more.png" />
+          </a>
+          <div class="more-info el hidden2">
+            <a href="" title="Show Less" class="a-more less" onclick="hide(event, 'el-more')">
+              <img src="/img/more.png" />
+              <span>Show Less</span>
+            </a>
+            <p>
+              EagleLogger is an app I made to help log checkins to the <a href="http://arrlwcf.org/wcf-section-programs/nts/" title="ARRL West Central Florida NTS Net" target="_blank">EagleNet</a> (I'm the NCS on Tuesdays). It's been an ongoing project with a few simple features with a stack that's usually a reflection of my professional environment. This version, the third, is the most streamlined and stable yet, being the easiest to maintaine while also costing the least in overhead.
+            </p>
+            <ul>
+              <li>Imported <a href="https://www.fcc.gov/uls/transactions/daily-weekly?job=transaction&page=weekly#fcc-uls-transaction-files-weekly">FCC ULS Database</a></li>
+              <li>Synchronizes with daily transaction logs</li>
+              <li>Migrated Previous MySQL, PostgreSQL databases and Excel Spreadsheets</li>
+              <li>Real-time data updates in the UI thanks to Firestore snapshot watchers</li>
+              <li>This is the third version of EagleLogger. Using VueJS+Firestore</li>
+              <li>The first version was PolymerJS+MySQL, and the second VueJS+PostgreSQL</li>
+              <li>HTML+JS is hosted on a K8s cluster</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div class="row column row-2">
+        <div class="row between row-reversed">
+          <div>
+            <img src="/img/roboflash.gif"  width="185" style="margin-top: 35px"/>
+          </div>
+          <div class="app-title right">
+            <h4><img src="/img/roboflash.png" width="45" style="margin: 0 10px 0" />RoboFlash</h4>
+            <h5>Language Photo Flashcards</h5>
+            <div class="open-links">
+              <a href="" title="EagleLogger for Web" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+              <a href="" title="EagleLogger for Android"><img src="/img/play-store.png" width="125" /></a>
+              <a href="" title="EagleLogger for iOS"><img src="/img/app-store.svg" width="110" /></a>
+            </div>
+          </div>
+        </div>
+        <div class="row column" id="rf-more">
+          <a href="" title="Click for More Info on RoboFlash" class="a-more" onclick="show(event, 'rf-more')">
+            <span>More Info</span>
+            <img src="/img/more.png" />
+          </a>
+          <div class="more-info rf hidden2">
+            <a href="" title="Show Less" class="a-more less" onclick="hide(event, 'rf-more')">
+              <img src="/img/more.png" />
+              <span>Show Less</span>
+            </a>
+            <p>
+              RoboFlash is an app to help learn foreign langauge vocab.
+            </p>
+            <ul>
+              <li>Word lists are maintained in Google Sheets for easy colaboration</li>
+              <li>Translation is done by Google Translate (within Google Sheets)</li>
+              <li>Audio is generated from the Google Text-to-Speech API</li>
+              <li>Static images are imported from the PixaBay API</li>
+              <li>GIFs are imported from the Giphy API</li>
+              <li>Language decks are JSON files stored on Google Cloud Storage</li>
+              <li>On devices, deck data is permanently stored and works offline</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div class="row column row-3">
+        <div class="row between">
+          <div>
+            <h4><img src="/img/birder.png" width="45" style="margin: 0 10px 0" />Birder.ai</h4>
+            <h5>Bird Song Identifier</h5>
+            <div class="open-links">
+              <a href="" title="EagleLogger for Web" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+              <a href="" title="EagleLogger for Android"><img src="/img/play-store.png" width="125" /></a>
+              <a href="" title="EagleLogger for iOS"><img src="/img/app-store.svg" width="110" /></a>
+            </div>
+          </div>
+          <div>
+            <img src="/img/birder.gif"  width="185"/>
+          </div>
+        </div>
+        <div class="row column" id="b-more">
+          <a href="" title="Click for More Info on EagleLogger" class="a-more" onclick="show(event, 'b-more')">
+            <span>More Info</span>
+            <img src="/img/more.png" />
+          </a>
+          <div class="more-info b hidden2">
+            <a href="" title="Show Less" class="a-more less" onclick="hide(event, 'b-more')">
+              <img src="/img/more.png" />
+              <span>Show Less</span>
+            </a>
+            <p>
+              Birder.ai is an app my wife invented (originally as an animal sound identifier) that uses the mic on your phone to listen to a few seconds of bird audio. That audio is transformed into a spectrogram and then send into an ML model that we trained to recgonize over 1,000 different species.
+            </p>
+            <ul>
+              <li>Processed over 300,000 audio files for over 4,000 species</li>
+              <li>Scraped Wikipedia for information on each animal to separate bird/non-bird</li>
+              <li>Used Sound Event Detection - training multiple models to isolate significant audio segments</li>
+              <li>Trained model and processed audio in python, converted to JS with TensorFlowJS</li>
+              <li>The app uses Web Audio API for cross-platform microphone access</li>
+            </ul>
+          </div>  
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+</div>
+<style>
+  html {
+    height: 100%;
+    font-family: 'Roboto Slab', sans-serif;
+  }
+  body {
+    /* min-height: 100% */
+  }
+  #site {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100%;
+    /* background: pink; */
+    display: flex;    
+    flex-direction: column;
+    /* opacity: 0; */
+    transition: all 1s;
+  }
+  h3 {
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 10px 5px 0;
+  }
+  h4 {
+    font-size: 26px;
+    margin: 10px 5px 0;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+  }
+  h5 {
+    font-size: 21px;
+    margin: 5px;
+  }
+
+  p {
+    font-size: 24px;
+    line-height: 28px;
+    padding: 25px;
+  }
+
+  #site > header {
+    height: 80px;
+    padding: 5px 15px;
+  }
+  #site > header > h1 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 28px;
+    margin: 15px 0 0 15px;
+  }
+  #site > header > h1 .in {
+    color: rgb(21, 76, 119)
+  }
+  #site > header > h2 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 0 15px;
+  }
+  @media (min-width: 800px) {
+    #site > header {
+      height: 96px;
+    }
+    #site > header > h1 {
+      font-size: 36px;
+      margin: 5px 0 0 5px;
+    }
+    #site > header > h2 {
+      font-size: 24px;
+      margin: 0 0 0 5px;
+    }
+  }
+  #site > main {
+    /* background: orange; */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+  #site > footer {
+    /* display: block; */
+    background: purple;
+    height: 150px;
+    /* width: 100%; */
+  }
+  .app-showcase .row {
+    border-radius: 4px;
+  }
+
+
+</style>
+
 </body>
 </html>
