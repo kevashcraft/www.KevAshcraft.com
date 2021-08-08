@@ -88,7 +88,9 @@
     </svg>
   </div>
    <script>
-     window.scrollTo(0, 0);
+ window.scrollTo(0, 0)
+ history.scrollRestoration = 'manual'
+ document.body.style.overflowY = 'hidden'
 
   anime({
     targets: '#layer1 path',
@@ -111,10 +113,12 @@
         })
         await new Promise(r => setTimeout(r, 25))
       }
+
       await new Promise(r => setTimeout(r, 2000))
       document.querySelector('#layer1').style.opacity = 0
       // await new Promise(r => setTimeout(r, 1000))
       document.querySelector('#site').style.opacity = 1
+      document.body.style.overflowY = 'auto'
     }
   });
 </script>
@@ -126,6 +130,9 @@
     <h2>Computer Programmer</h2>
   </header>
   <style>
+    body {
+      overflow-x: hidden;
+    }
     .app-showcase {
       display: flex;
       align-items: center;
@@ -146,6 +153,12 @@
     }
     .app-title {
       /* margin-left: 25px; */
+    }
+    @media (max-width: 600px) {
+      .app-title {
+        margin-top: 35px;
+        margin-bottom: 65px;
+      }
     }
     .app-title.right {
       margin-left: 0;
@@ -194,6 +207,18 @@
       align-items: center;
       margin: 25px auto;
     }
+    .open-links.small {
+      display: none;
+      margin: 35px auto 25px;
+    }
+    @media (max-width: 600px) {
+      .open-links {
+        display: none;
+      }
+      .open-links.small {
+        display: flex;
+      }
+    }
     .open-links a {
       margin: 5px;
     }
@@ -208,11 +233,11 @@
     @media (max-width: 600px) {
       .row-1, .row-3 {
         background: rgb(21,101,192);
-        background: linear-gradient(180deg, rgba(21,101,192,1) 0%, rgba(242,242,242,0) 35%);
+        background: linear-gradient(180deg, rgba(21,101,192,1) 0%, rgba(242,242,242,0) 25%);
       }
       .row-2 {
         background: rgb(76,175,80);
-        background: linear-gradient(180deg, rgba(76,175,80,1) 0%, rgba(255,255,255,1) 35%);        
+        background: linear-gradient(180deg, rgba(76,175,80,1) 0%, rgba(255,255,255,1) 25%);        
       }
     }
     .a-std {
@@ -383,14 +408,18 @@
             <h4><img src="/img/eaglelogger.png" width="45" />EagleLogger</h4>
             <h5>Ham Radio Checkin & Chat</h5>
             <div class="open-links">
-              <a href="" title="EagleLogger for Web" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
-              <a href="" title="EagleLogger for Android"><img src="/img/play-store.png" width="125" /></a>
-              <a href="" title="EagleLogger for iOS"><img src="/img/app-store.svg" width="110" /></a>
+              <a href="https://eaglelogger.com" title="EagleLogger for Web" class="a-button" target="_blank"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+              <a href="https://play.google.com/store/apps/details?id=com.eaglelogger.app" target="_blank" title="EagleLogger for Android"><img src="/img/play-store.png" width="125" /></a>
             </div>
           </div>
           <div>
             <img src="/img/eaglelogger.gif"  width="185" style="margin-top: 35px"/>
           </div>
+        </div>
+        <div class="open-links small">
+          <a href="https://eaglelogger.com" title="EagleLogger for Web" class="a-button" target="_blank"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+          <a href="https://play.google.com/store/apps/details?id=com.eaglelogger.app" target="_blank" title="EagleLogger for Android"><img src="/img/play-store.png" width="125" /></a>
+          <!-- <a href="" title="EagleLogger for iOS"><img src="/img/app-store.svg" width="110" /></a> -->
         </div>
         <div class="row column" id="el-more" style="width: 100%">
           <a href="" title="Click for More Info on EagleLogger" class="a-more" onclick="show(event, 'el-more')">
@@ -429,11 +458,16 @@
             <h4><img src="/img/roboflash.png" width="45" style="margin: 0 10px 0" />RoboFlash</h4>
             <h5>Language Photo Flashcards</h5>
             <div class="open-links">
-              <a href="" title="EagleLogger for Web" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
-              <a href="" title="EagleLogger for Android"><img src="/img/play-store.png" width="125" /></a>
-              <a href="" title="EagleLogger for iOS"><img src="/img/app-store.svg" width="110" /></a>
+              <a href="https://roboflash.app" title="RoboFlash for Web" target="_blank" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+              <a href="https://play.google.com/store/apps/details?id=com.logicdudes.robot_flash" target="_blank" title="RoboFlash for Android"><img src="/img/play-store.png" width="125" /></a>
+              <a href="https://apps.apple.com/us/app/roboflash/id1547172369" target="_blank" title="RoboFlash for iOS"><img src="/img/app-store.svg" width="110" /></a>
             </div>
           </div>
+        </div>
+        <div class="open-links small">
+          <a href="https://roboflash.app" title="RoboFlash for Web" target="_blank" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+          <a href="https://play.google.com/store/apps/details?id=com.logicdudes.robot_flash" target="_blank" title="RoboFlash for Android"><img src="/img/play-store.png" width="125" /></a>
+          <a href="https://apps.apple.com/us/app/roboflash/id1547172369" target="_blank" title="RoboFlash for iOS"><img src="/img/app-store.svg" width="110" /></a>
         </div>
         <div class="row column" id="rf-more" style="width: 100%">
           <a href="" title="Click for More Info on RoboFlash" class="a-more" onclick="show(event, 'rf-more')">
@@ -465,18 +499,23 @@
       <div class="hr"></div>
       <div class="row column row-3" style="align-items: center; width: 100%">
         <div class="row between" style="width: 100%; max-width: 800px">
-          <div>
+          <div class="app-title">
             <h4><img src="/img/birder.png" width="45" style="margin: 0 10px 0" />Birder.ai</h4>
             <h5>Bird Song Identifier</h5>
             <div class="open-links">
-              <a href="" title="EagleLogger for Web" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
-              <a href="" title="EagleLogger for Android"><img src="/img/play-store.png" width="125" /></a>
-              <a href="" title="EagleLogger for iOS"><img src="/img/app-store.svg" width="110" /></a>
+              <a href="https://www.birder.ai" title="Birder.ai for Web" target="_blank" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+              <a href="https://play.google.com/store/apps/details?id=ai.birder.android" title="Birder.ai for Android" target="_blank"><img src="/img/play-store.png" width="125" /></a>
+              <a href="https://apps.apple.com/us/app/birder-ai/id1547198610" title="Birder.ai for iOS" target="_blank"><img src="/img/app-store.svg" width="110" /></a>
             </div>
           </div>
           <div>
             <img src="/img/birder.gif"  width="185"/>
           </div>
+        </div>
+        <div class="open-links small">
+          <a href="https://www.birder.ai" title="Birder.ai for Web" target="_blank" class="a-button"><img src="/img/open-in-new.svg" width="15" /> Open Now</a>
+          <a href="https://play.google.com/store/apps/details?id=ai.birder.android" title="Birder.ai for Android" target="_blank"><img src="/img/play-store.png" width="125" /></a>
+          <a href="https://apps.apple.com/us/app/birder-ai/id1547198610" title="Birder.ai for iOS" target="_blank"><img src="/img/app-store.svg" width="110" /></a>
         </div>
         <div class="row column" id="b-more" style="width: 100%">
           <a href="" title="Click for More Info on EagleLogger" class="a-more" onclick="show(event, 'b-more')">
@@ -562,8 +601,8 @@
     display: block;
     width: 100%;
     /* max-width: 1200px; */
-    margin: 0 auto;
-    padding: 5px 15px;
+    /* margin: 0 auto; */
+    /* padding: 5px 0 5px 15px; */
   }
   #site h1 {
     font-family: 'Roboto Slab', sans-serif;
